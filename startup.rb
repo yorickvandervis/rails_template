@@ -59,21 +59,19 @@ file "app/views/shared/_darktoggle.html.erb", <<~CODE
 
 CODE
 
+# Inject dark mode controller
+file "app/javascript/controllers/dark_toggle_controller.js", "https://github.com/yorickvandervis/rails_template/blob/main/snippets/dark_toggle_controller.js"
+
 # Replace the existing application.html.erb with the one from GitHub
 remove_file "app/views/layouts/application.html.erb"
-file "app/views/layouts/application.html.erb", "https://raw.githubusercontent.com/yorickvandervis/rails_template/main/snippets/application.html.erb"
+file "app/views/layouts/application.html.erb", "https://github.com/yorickvandervis/rails_template/blob/main/snippets/application.html.erb"
 
 # Define the content you want in your tailwind.config.js
 remove_file "tailwind.config.js"
-file "tailwind.config.js", "https://raw.githubusercontent.com/yorickvandervis/rails_template/main/snippets/tailwind.config.js"
+file "tailwind.config.js", "https://github.com/yorickvandervis/rails_template/blob/main/snippets/tailwind.config.js"
 
 generate(:controller, "static_pages", "index")
 route "root to: 'static_pages#index'"
-
-file "app/components/foo.rb", <<-CODE
-  class Foo
-  end
-CODE
 
 rails_command("db:create db:migrate")
 
